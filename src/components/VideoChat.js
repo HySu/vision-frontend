@@ -5,8 +5,10 @@ import ParticipantsList from './ParticipantsList';
 import socketConnection from '../utils/socketConnection';
 import WebRTCManager from '../utils/webrtc';
 import debug from '../utils/debug';
+import { useAuth } from '../contexts/AuthContext';
 
 function VideoChat({ userName, roomId, onLeave }) {
+  const { currentUser } = useAuth();
   const [localStream, setLocalStream] = useState(null);
   const [participants, setParticipants] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -89,8 +91,12 @@ function VideoChat({ userName, roomId, onLeave }) {
         stream: stream
       }]);
       
-      // Join Room  
-      socket.emit('join-room', { roomId, userName, userId: null });
+      // Join Room with Firebase user ID
+      socket.emit('join-room', { 
+        roomId, 
+        userName, 
+        userId: currentUser?.uid || null 
+      });
       
       setIsConnected(true);
     } catch (error) {
