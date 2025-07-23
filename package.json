@@ -1,0 +1,36 @@
+{
+  "name": "vision-frontend",
+  "version": "1.0.0",
+  "description": "Vision Video Chat Frontend - React Application",
+  "private": true,
+  "scripts": {
+    "start": "HTTPS=true SSL_CRT_FILE=../vision-backend/ssl/cert.pem SSL_KEY_FILE=../vision-backend/ssl/key.pem react-scripts start",
+    "start:http": "react-scripts start",
+    "start:https": "HTTPS=true SSL_CRT_FILE=../vision-backend/ssl/cert.pem SSL_KEY_FILE=../vision-backend/ssl/key.pem react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "npm run start:https"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "socket.io-client": "^4.7.2",
+    "uuid": "^9.0.0",
+    "firebase": "^10.7.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "https://localhost:3443"
+}
